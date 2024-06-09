@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #575d63;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: calc(100% - 250px);
+            left: 250px;
+            top: 0;
+            z-index: 1000;
+        }
+        .card {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<div class="sidebar">
+    <h4 class="text-center text-white">Employée Dashboard</h4>
+    <a th:href="@{/conge/welcome}"><i class="fas fa-tachometer-alt"></i> Dashboard</a> 
+    <a th:href="@{/conge/employeId/{employeId}(employeId=${user.id})}"><i class="fas fa-chart-bar"></i> Consulter Congé</a>
+    <a th:href="@{/conge/formconge(employeId=${user.id})}"><i class="fas fa-sign-out-alt"></i> Solliciter Congé</a>
+    <a th:href="@{login}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    
+</div>
+<div class="content">
+<div class="header">
+        <h2 class="text-center">Welcome <span th:text="${user.nom}"></span> !</h2>
+    </div>	
+	</div>
+	<div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+            
+            
+            </div>
+            </div>
+            </div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout}" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        .navbar {
+            margin-bottom: 50px;
+        }
+        .card {
+            margin-top: 50px;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+        }
+        .card-header {
+            background-color: #343a40;
+            color: white;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .container {
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10"> <!-- Widened column -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title text-center">Formulaire</h4>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/conge/save}" method="post">
+                                <!-- Champs existants -->
+                                <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <input type="text" class="form-control" id="name" name="description" placeholder="Entrez la description">
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate">Date de début</label>
+                                    <input type="date" class="form-control" id="startDate" name="startDate">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endDate">Date de fin</label>
+                                    <input type="date" class="form-control" id="endDate" name="endDate">
+                                </div>
+                                <!-- Champ pour l'ID de l'employé -->
+                                <input type="hidden" id="employeId" name="employeId" th:value="${user.id}">
+                                
+                                <button type="submit" class="btn btn-primary btn-block">Valider</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<hr>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employe Liste</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+        <div class="d-flex justify-content-end"> <!-- Flex utility for right alignment -->
+
+<div layout:fragment="content">
+    <div class="card-body">
+        <h3 class="mb-5">Liste des Congés pour l'employé <span th:text="${employe.nom}"></span></h3>
+        
+            <form class="form-inline" th:action="@{/conge/search}" method="get">
+                <div class="form-group">
+                    <label for="startDate" class="mr-2">Date Début:</label>
+                    <input type="date" class="form-control mr-2" id="startDate" name="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate" class="mr-2">Date Fin:</label>
+                    <input type="date" class="form-control mr-2" id="endDate" name="endDate">
+                </div>
+                <div class="form-group">
+                    <label for="etatConge" class="mr-2">État Congé:</label>
+                    <select class="form-control mr-2" id="etatConge" name="etatConge">
+                        <option value="">Tous</option>
+                        <option value="PENDING">En attente</option>
+                        <option value="APPROVED">Approuvé</option>
+                        <option value="REJECTED">Rejeté</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+            </form>
+        </div>
+
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
+                    <th>État Congé</tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${conges}">
+                    <td th:text="${p.id}"></td>
+                    <td th:text="${p.description}"></td>
+                    <td th:text="${p.dateDebut}"></td>
+                    <td th:text="${p.dateFin}"></td>
+                    <td th:text="${p.etatconge}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
